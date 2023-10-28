@@ -79,7 +79,7 @@ func main() {
 		Infos = append(Infos, *v)
 	}
 	// Open a file for writing
-	outFile, err := os.Create("output.csv")
+	outFile, err := os.Create("output1.csv")
 	if err != nil {
 		panic(err)
 	}
