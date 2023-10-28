@@ -44,8 +44,16 @@ type OpenCostMain struct {
 func main() {
 	//windowsArg := flag.String("w", "30d", "the range to fetch OpenCost data in")
 	//flag.Parse()
+	window, windowFound := os.LookupEnv("WINDOW")
+	if !windowFound {
+		window = "30d"
+	}
+	Ip, ipFound := os.LookupEnv("URL_IP")
+	if !ipFound {
+		panic("IP needs to be written")
+	}
 
-	response, err := http.Get(fmt.Sprintf("http://localhost:9090/model/allocation/compute?window=30d&accumulate=false&aggregate=namespace"))
+	response, err := http.Get(fmt.Sprintf("%s/model/allocation/compute?window=%s&accumulate=false&aggregate=namespace", Ip, window))
 	if err != nil {
 		panic(err)
 	}
