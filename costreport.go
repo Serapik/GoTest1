@@ -52,6 +52,10 @@ func main() {
 	if !ipFound {
 		panic("IP needs to be written")
 	}
+	buildNumber, buildnumberFound := os.LookupEnv("BUILD_NUMBER")
+	if !buildnumberFound {
+		panic("Build number is required")
+	}
 
 	response, err := http.Get(fmt.Sprintf("%s/model/allocation/compute?window=%s&accumulate=false&aggregate=namespace", Ip, window))
 	if err != nil {
@@ -79,7 +83,8 @@ func main() {
 		Infos = append(Infos, *v)
 	}
 	// Open a file for writing
-	outFile, err := os.Create("output1.csv")
+
+	outFile, err := os.Create("output" + buildNumber + ".csv")
 	if err != nil {
 		panic(err)
 	}

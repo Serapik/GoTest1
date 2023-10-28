@@ -1,0 +1,5 @@
+Properties.Namespace,CPUCost,GpuCost,NetworkCost,RAMCost,SharedCost,TotalCost
+prometheus,0,0,0,0,0,0.00584
+default,0,0,0,0,0,0.00519
+kube-system,0.14027,0,0,0.00416,0,0.14444
+opencost,0.00374,0,0,0.00257,0,0.00631
