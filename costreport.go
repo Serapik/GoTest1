@@ -88,6 +88,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println(outFile.Name())
+
 	defer outFile.Close() // Ensure the file gets closed
 	// Write the CSV data to the file
 	err = gocsv.Marshal(&Infos, outFile)
